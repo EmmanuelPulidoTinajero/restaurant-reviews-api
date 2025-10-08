@@ -5,12 +5,13 @@ import swaggerJsDoc from "swagger-jsdoc";
 import { setup, serve } from "swagger-ui-express"
 import swaggerConfig from "./../swagger.config"
 import { dbConnect } from "./db/db";
+import routes from "./app/routes/index"
 
 
 
 const port = process.env.PORT || 3000;
 const app = express();
-
+app.use(routes);
 
 app.get("", (req, res) => {
     console.log("connecting...");    
