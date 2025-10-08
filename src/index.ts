@@ -11,14 +11,19 @@ import routes from "./app/routes/index"
 
 const port = process.env.PORT || 3000;
 const app = express();
-app.use(routes);
+app.use(express.json());
+
+
 
 app.get("", (req, res) => {
     console.log("connecting...");    
 })
 
+import userRoutes from './app/routes/userRoutes';
+
 const swaggerDocs = swaggerJsDoc(swaggerConfig);
 app.use("/swagger", serve, setup(swaggerDocs));
+app.use('/api', userRoutes);
 
 dbConnect().then(()=> {
     app.listen(port, () => {
