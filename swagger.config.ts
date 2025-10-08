@@ -5,9 +5,9 @@ const options : SwaggerOptions = {
     swaggerDefinition: {
         openapi: '3.1.0',
         info: {
-            title: 'Synapse Call',
-            description: 'A robust and scalable backend service for real-time video and audio communication. Powers seamless, low-latency video conferencing applications.',
-            version: '0.0.1'
+            title: 'restaurant-reviews-api',
+            description: 'A powerful and easy-to-use API for fetching and managing restaurant reviews. Users can read, write, update, and delete reviews for various restaurants.',
+            version: '1.0.0'
         },
         servers: [
             { url: 'http://localhost:' + process.env.PORT }
