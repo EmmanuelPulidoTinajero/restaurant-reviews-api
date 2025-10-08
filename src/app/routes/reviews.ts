@@ -5,7 +5,7 @@ const router = Router();
 
 router.get("/:id", getReviewController);
 router.put("/:id", authMiddleware, updateReviewController);
-router.post("", postReviewController);
+router.post("", authMiddleware, postReviewController);
 
 
 export default router;
