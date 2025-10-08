@@ -1,0 +1,34 @@
+import express from "express";
+import dotenv from "dotenv"
+dotenv.config()
+import swaggerJsDoc from "swagger-jsdoc";
+import { setup, serve } from "swagger-ui-express"
+import swaggerConfig from "./../swagger.config"
+import { dbConnect } from "./db/db";
+
+
+
+const port = process.env.PORT || 3000;
+const app = express();
+
+
+app.get("", (req, res) => {
+    console.log("connecting...");    
+})
+
+const swaggerDocs = swaggerJsDoc(swaggerConfig);
+app.use("/swagger", serve, setup(swaggerDocs));
+
+dbConnect().then(()=> {
+    app.listen(port, () => {
+        console.log(`Server runnning on port ${port}`);
+    })
+})
+.catch(() => {
+    console.log("Failed to connect to database");
+    
+})
+
+
+
+
